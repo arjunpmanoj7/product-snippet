@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="article_tags_id" model="ir.actions.act_window">
+        <field name="name">article tags</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">article.tags</field>
+        <field name="view_mode">tree,form</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Create WorkSpace to Upload your Documents
+            </p>
+        </field>
+    </record>
+        <menuitem id="knowledge_article_id"
+              name="" action="article_tags_id"
+              parent="myknowledge_module_root"
+              sequence="2"/>
+</odoo>

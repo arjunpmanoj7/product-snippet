@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<templates id="template" xml:space="preserve">
+
+<t t-extend="ListView.buttons" t-name="UploadDocumentList.Buttons">
+    <t t-jquery="div.o_list_buttons" t-operation="append">
+        <button t-if="widget.modelName == 'document.file'"  name="upload_form_button" class="btn btn-primary on_upload_doc_list" type="button">
+            Upload
+        </button>
+    </t>
+</t>
+</templates>

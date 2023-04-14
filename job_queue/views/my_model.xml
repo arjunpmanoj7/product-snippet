@@ -1,0 +1,89 @@
+<odoo>
+    <record id="new_action_view" model="ir.actions.act_window">
+        <field name="name">My Queue Jobs</field>
+        <field name="res_model">email.queue.jobs</field>
+        <field name="view_mode">tree,form,kanban</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Create a new record!
+            </p>
+        </field>
+    </record>
+    <record id="my_other_model_action" model="ir.ui.view">
+        <field name="name">email.queue.jobs</field>
+        <field name="model">email.queue.jobs</field>
+        <field name="arch" type="xml">
+            <form>
+                <header>
+                    <field name="state" widget="statusbar"
+                           statusbar_visible="draft,running,canceled"/>
+                    <button name="button_start" string="Start"
+                            type="object" states="draft"
+                    />
+                    <button name="button_cancel" string="Cancel Job"
+                            type="object" states="running"
+                    />
+                    <button name="button_reopen" string="Restart Job"
+                            type="object" states="canceled"
+                    />
+                </header>
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="name"/>
+                            <field name="schedule_by" widget="radio"/>
+                            <field name="week" attrs="{'invisible':[('schedule_by','!=', 'weekly')]}"/>
+                            <field name="start_date" invisible="1"/>
+
+                        </group>
+                        <group>
+                            <field name="report_id"/>
+                            <field name="recipients_email_ids"
+                                   widget="many2many_tags"/>
+                            <field name="eta" invisible="1"/>
+                            <field name="next_excution_date" force_save="1"/>
+                        </group>
+
+                    </group>
+                    <notebook>
+                        <page string="Filter">
+                            <field name="queue_job_filter_ids">
+                                <tree editable="bottom">
+                                    <field name="model_fields_id"/>
+                                    <field name="selected_by"/>
+                                    <field name="value"/>
+                                </tree>
+                            </field>
+                        </page>
+                    </notebook>
+                </sheet>
+                <div class="oe_chatter">
+                    <field name="message_follower_ids"/>
+                    <field name="activity_ids"/>
+                    <field name="message_ids"/>
+                </div>
+            </form>
+        </field>
+    </record>
+    <record id="email_queue_jobs_action" model="ir.ui.view">
+        <field name="name">email.queue.jobs</field>
+        <field name="model">email.queue.jobs</field>
+        <field name="arch" type="xml">
+                <tree>
+                    <field name="name"/>
+                    <field name="report_id"/>
+                    <field name="schedule_by"/>
+                    <field name="state"/>
+                </tree>
+        </field>
+    </record>
+    <menuitem id="my_model_id"
+              name="Email Queue job"
+              sequence="1"/>
+    <menuitem id="my_model_new"
+              name="My Queue Jobs"
+              parent="my_model_id"
+              action="new_action_view"
+              sequence="1"
+    />
+</odoo>

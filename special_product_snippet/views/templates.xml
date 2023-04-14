@@ -1,0 +1,23 @@
+<templates id= "template" xml:space="preserve">
+    <t t-name="dynamic_1">
+       <div class="product-page">
+            <img t-att-src="image_url"
+                 alt="Product Image"
+                 class="product-image"/>
+            <div class="product-details">
+                <h1 class="product-name dis_nme">
+                    <t t-esc="display_name"/>
+                </h1>
+                <p class="product-description">Description of the
+                    product
+                </p>
+                <p class="product-price">Starting at
+                    <t t-esc="list_price"/>
+                </p>
+                <a t-att-href="website_url" class="cta-button3">
+                    view
+                </a>
+            </div>
+        </div>
+    </t>
+</templates>

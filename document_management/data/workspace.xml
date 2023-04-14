@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="document_workspace_0" model="document.workspace">
+        <field name="name">My Workspace</field>
+        <field name="display_name">My Workspace</field>
+        <field name="description">The workspace here is the default</field>
+    </record>
+</odoo>

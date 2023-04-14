@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <menuitem name="SMS Gateway"
+              id="r1"
+              parent="base.menu_administration"
+              groups="send_sms_gateway.sms_manager"
+    />
+    <menuitem name="Gateway List"
+              id="r2"
+              parent="r1"
+              action="send_sms_gateway.sms_user_gateway_list_view_form"
+              groups="send_sms_gateway.sms_manager"
+    />
+    <menuitem name="Sms History"
+              id="r3"
+              parent="r1"
+              action="view_partner_sms_history_action"
+              groups="send_sms_gateway.sms_manager"
+    />
+</odoo>

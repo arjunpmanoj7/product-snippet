@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates id="template" xml:space="preserve">
+  <t t-name="BookButton" owl="1">
+    <!--        <t t-if="env.pos.config.enable">-->
+      <!--            <span class='control-button'>-->
+      <button class="control-button">
+      <i class='fa fa-bell'/>
+          <span class="label">Send to Kitchen</span>
+    </button>
+      <!--            </span>-->
+      <!--        </t>-->
+  </t>
+    <t t-name="KitchenScreen" owl="1">
+    <div class="clientlist-screen screen">
+      <div class="full_width screen-content">
+        <section class="top-content">
+          <div class="top-content">
+            <div class="button back"
+                 t-on-click="() => this.showScreen('ProductScreen')">
+              <i class="fa fa-angle-double-left fa-fw"></i>
+                <span class="back_text">Back</span>
+            </div>
+              <div class="top-content-center">
+              <h1>Kitchen Screen</h1>
+            </div>
+          </div>
+        </section>
+          <section class="full-content">
+            <div class='window'>
+              <section class='subwindow collapsed'>
+                <div class='subwindow-container collapsed'>
+                  <div class='subwindow-container-fix order-details-contents'></div>
+                </div>
+              </section>
+              <section class="subwindow list">
+                  <div class="subwindow-container">
+                    <div class="subwindow-container-fix scrollable-y">
+                      <div class="col-12">
+                        <div class="col-md-3">
+                          <div class="container-box">
+                               <div class="container-fluid">
+                                 <div class="row">
+                                   <div class="col-12 col-sm-12 col-md-6 col-lg-4">
+                                     <div class="kt-card">
+                                       <div class="kt-card__header">
+                                         <img src="/pos_kitchen_order/static/image/table.png"
+                                              class="kt-card__header-image"/>
+                                           <div class="kt-card__header-details">
+                                           <span class="kt-card__table-info">Table : T1 [Main Floor]</span>
+                                               <span class="kt-card__guest-count">Guests: 1</span>
+                                               <span class="kt-card__role">waiter</span>
+                                           </div>
+                                           <div class="kt-card__header-details">
+                                             <span class="kt-card__timestamp">15:50:55</span>
+                                           </div>
+                                       </div>
+                                         <div class="kt-card__body">
+                                         <ul class="kt-card__list">
+                                           <li class="kt-card__item">
+                                             <span class="kt-card__item-count">1</span>
+                                               <span class="kt-card__item-name">
+                                               Bacon Burger
+                                             </span>
+                                               <div class="kt-card__actions">
+                                               <button class="kt-card__btn">
+                                                 <i class="fa fa-print"></i>
+                                               </button>
+                                                   <button class="kt-card__btn kt-card__btn--green-text">Start</button>
+                                             </div>
+                                           </li>
+                                         </ul>
+                                       </div>
+                                         <div class="kt-card__footer kt-card__btn-wide">
+                                         <button class="kt-card__btn kt-card__btn-wide"><i class="fa fa-print"></i></button>
+                                       </div>
+                                     </div>
+                                   </div>
+                                 </div>
+                               </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+              </section>
+            </div>
+          </section>
+      </div>
+    </div>
+  </t>
+</templates>

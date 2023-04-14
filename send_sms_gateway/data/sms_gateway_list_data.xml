@@ -1,0 +1,20 @@
+<odoo>
+    <record id="sms_gateway_names_d7" model="sms.gateway">
+        <field name="name">d7</field>
+    </record>
+    <record id="sms_gateway_names_twilio" model="sms.gateway">
+        <field name="name">twilio</field>
+    </record>
+      <record id="sms_gateway_name_vonage" model="sms.gateway">
+        <field name="name">vonage</field>
+    </record>
+     <record id="sms_gateway_names_telesign" model="sms.gateway">
+        <field name="name">telesign</field>
+    </record>
+    <record id="sms_gateway_names_messagebird" model="sms.gateway">
+        <field name="name">messagebird</field>
+    </record>
+     <record id="sms_gateway_names_telnyx" model="sms.gateway">
+        <field name="name">telnyx</field>
+    </record>
+</odoo>

@@ -1,0 +1,10 @@
+<odoo>
+     <record id="sms_history_rule_company" model="ir.rule" >
+        <field name="name">Sms: multi-company</field>
+        <field name="model_id" ref="model_sms_history"/>
+        <field name="domain_force">['|', ('sms_history_company_id', '=',
+            False),
+            ('sms_history_company_id', '=', company_ids)]
+        </field>
+    </record>
+</odoo>

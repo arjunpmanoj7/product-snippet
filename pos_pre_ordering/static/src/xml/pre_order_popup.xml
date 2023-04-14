@@ -1,0 +1,24 @@
+<templates id="template" xml:space="preserve">
+    <t t-name="CreatePreOrderPopup" owl="1">
+        <Draggable>
+            <div class="popup popup-saleorder">
+                <p class="title">
+                    <t t-esc="props.title"/>
+                </p>
+                <main class="body">
+                    <div class="form-group">
+                        <label for="estimated-time">Estimated Time of Arrival:</label>
+                        <input type="time" id="estimated-time"
+                               name="estimated_time"/>
+                    </div>
+                </main>
+                <footer class="footer">
+                    <div class="button confirm"
+                         t-on-click="() => this.trigger('send_to_kitchen')">
+                        <t t-esc="props.confirmText"/>
+                    </div>
+                </footer>
+            </div>
+        </Draggable>
+    </t>
+</templates>

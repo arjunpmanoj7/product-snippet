@@ -1,0 +1,5 @@
+id,name,model_id/id,group_id/id,perm_read,perm_write,perm_create,perm_unlink
+access_fiscal_year,fiscal.year,model_fiscal_year,account.group_account_user,1,1,1,1
+access_fiscal_periods,fiscal.periods,model_fiscal_periods,account.group_account_user,1,1,1,1
+access_opening_entries,opening.entries,model_opening_entries,account.group_account_user,1,1,1,1
+access_cancel_closing_entry,cancel.closing.entry,model_cancel_closing_entry,account.group_account_user,1,1,1,1

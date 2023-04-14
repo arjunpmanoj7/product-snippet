@@ -1,0 +1,64 @@
+<odoo>
+    <record id="fiscal_periods_action" model="ir.actions.act_window">
+        <field name="name">Fiscal periods</field>
+        <field name="res_model">fiscal.periods</field>
+        <field name="view_mode">tree,form,kanban</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Create a new record!
+            </p>
+        </field>
+    </record>
+    <record id="fiscal_periods_form" model="ir.ui.view">
+        <field name="name">fiscal periods form</field>
+        <field name="model">fiscal.periods</field>
+        <field name="arch" type="xml">
+            <form>
+                <header>
+                    <field name="state" widget="statusbar"
+                           statusbar_visible="open,close"/>
+                    <button name="close_period" string="Close Period"
+                            type="object" class="oe_highlight" states="open"
+                    />
+                    <button name="reopen" string="Reopen"
+                            type="object" class="oe_highlight" states="close"
+                    />
+
+                </header>
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="period_name"/>
+                            <field name="code"/>
+                            <field name="fiscal_year_id"/>
+                        </group>
+                        <group>
+                            <field name="start_period"/>
+                            <field name="end_period"/>
+
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+    <record id="fiscal_periods_tree" model="ir.ui.view">
+        <field name="name">fiscal periods tree</field>
+        <field name="model">fiscal.periods</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="period_name"/>
+                <field name="code"/>
+                <field name="start_period"/>
+                <field name="end_period"/>
+                <field name="state"/>
+            </tree>
+        </field>
+    </record>
+
+    <menuitem id="fiscal_periods_id"
+              name="period"
+              parent="periods_id"
+              action="fiscal_periods_action"/>
+
+</odoo>

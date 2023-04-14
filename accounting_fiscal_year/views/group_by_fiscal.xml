@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <record id="account_fiscal_groupby_inherit" model="ir.ui.view">
+        <field name="name">account.move.groupby.fiscal</field>
+        <field name="model">account.move</field>
+        <field name="inherit_id" ref="account.view_account_invoice_filter"/>
+        <field name="arch" type="xml">
+            <xpath expr="//group/filter[@name='status']" position="after">
+                <filter string="Fiscal Year" name="fiscal_year" domain="[]" context="{'group_by':'fiscal_year_id'}"/>
+                <filter string="Fiscal period" name="fiscal_period" domain="[]" context="{'group_by':'periods_id'}"/>
+            </xpath>
+        </field>
+    </record>
+</odoo>

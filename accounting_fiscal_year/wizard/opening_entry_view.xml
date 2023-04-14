@@ -1,0 +1,44 @@
+<odoo>
+    <record id="opening_entry_journal" model="ir.ui.view">
+        <field name="name">Generate Fiscal Year Opening Entry</field>
+        <field name="model">opening.entries</field>
+        <field name="arch" type="xml">
+            <form string="Test">
+                <group>
+                    <group>
+                        <field name="fiscal_year_close"/>
+                        <field name="Opening_journal_entry"/>
+<!--                        <field name="name_entry"/>-->
+                    </group>
+                    <group>
+                        <field name="new_fiscal_year"/>
+                        <field name="opening_entries_period"/>
+                    </group>
+                </group>
+                <footer>
+
+                    <button name="create_entry" string="Create"
+                            class="oe_highlight" type="object"
+                    />
+                    <button string="Cancel" class="btn-secondary"
+                            special="cancel"/>
+                </footer>
+
+            </form>
+        </field>
+    </record>
+     <record id="opening_entry_action" model="ir.actions.act_window">
+        <field name="name">Fiscal Year Opening Entry</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">opening.entries</field>
+        <field name="view_mode">form</field>
+        <field name="view_id" ref="opening_entry_journal"/>
+        <field name="target">new</field>
+    </record>
+
+      <menuitem id="opening_entry_id"
+              name="Generate Opening Entry"
+              parent="periods_id"
+              action="opening_entry_action"
+    />
+</odoo>

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <data>
+        <record id="first" model="scheduled.date">
+            <field name="name">Monday</field>
+
+        </record>
+        <record id="second" model="scheduled.date">
+            <field name="name">Tuesday</field>
+
+        </record>
+        <record id="third" model="scheduled.date">
+            <field name="name">Wednesday</field>
+
+        </record>
+        <record id="fourth" model="scheduled.date">
+            <field name="name">Thursday</field>
+
+        </record>
+        <record id="fifth" model="scheduled.date">
+            <field name="name">Friday</field>
+
+        </record>
+         <record id="sixth" model="scheduled.date">
+            <field name="name">Saturday</field>
+
+        </record>
+         <record id="seventh" model="scheduled.date">
+            <field name="name">Sunday</field>
+        </record>
+
+
+
+    </data>
+</odoo>

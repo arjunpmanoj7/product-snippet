@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates id="template" xml:space="preserve">
+
+   <t t-name="CreateSaleOrderPopup" owl="1">
+       <Draggable>
+           <div class="popup popup-saleorder">
+               <p class="title">
+                   <t t-esc="props.title"/>
+               </p>
+               <main class="body">
+                   <span class="product_details">
+                       <t t-esc="this.env.pos.selectedOrder.selected_orderline.full_product_name"/>
+                       :
+                       <t t-esc="this.env.pos.selectedOrder.selected_orderline.quantity"/>
+                       Units
+                       <br></br>
+                       <t t-set="count" t-value="1"/>
+                       <t t-foreach="this.env.pos.selectedOrder.selected_orderline.product.pos.session_orders"
+                          t-as="lead" t-key="lead.id">
+                               <t t-if="this.env.pos.selectedOrder.selected_orderline.product.id == lead.product_temp_con[0]">
+                                        <t t-if="lead.value">
+                                        <t t-if="count==1">
+<!--                                <t t-esc="lead.value"/>-->
+                                            CW Value:
+                                            <span id="value"></span>
+                                            <select style=" margin-top:20px;width:50px;min-height:30px;" id="select"
+                                                    t-on-change="cw_uom_select">
+                                                    <option></option>
+                                                <t t-foreach="this.env.pos.selectedOrder.selected_orderline.product.pos.session_orders"
+                                                   t-as="lead" t-key="lead.id">
+
+
+                            <t t-if="this.env.pos.selectedOrder.selected_orderline.product.id == lead.product_temp_con[0]">
+
+                                <option t-att-value="lead.catch_weight_uom[0]"
+                                        t-esc="lead.catch_weight_uom[1]"/>
+
+                                <t t-esc="lead.catch_weight_uom[1]"/>
+                                <!--                            <t t-if="lead.value">-->
+
+                                <!--                                <t t-esc="lead.value"/>-->
+                                <!--                                </t>-->
+                            </t>
+
+                        </t>
+
+                       </select>
+                                             <t t-set="count" t-value="2"/>
+                                        </t>
+                                        </t>
+
+
+                               </t>
+                       </t>
+
+                       <!--                       <span>CW Quantity:<input inputmode="numeric" class="o_input" style="min-height: 25px;width: 20%;padding: 2px 2px;" /></span>-->
+
+                   </span>
+
+               </main>
+
+               <footer class="footer">
+                   <div class="button confirm" t-on-click="() => this.trigger('add_to_line')">
+                            <t t-esc="props.confirmText"/>
+                                      </div>
+
+
+                   <div class="button cancel" t-on-click="cancel">
+                            <t t-esc="props.cancelText"/>
+
+                   </div>
+               </footer>
+           </div>
+       </Draggable>
+   </t>
+</templates>

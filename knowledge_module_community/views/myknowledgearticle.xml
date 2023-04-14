@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="my_knowledge_id" model="ir.actions.act_window">
+        <field name="name">My Knowledge Module</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">my.knowledge.article</field>
+        <field name="view_mode">tree,form</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Create WorkSpace to Upload your Documents
+            </p>
+        </field>
+    </record>
+
+    <record id="my_knowledge_view" model="ir.ui.view">
+        <field name="name">my.knowledge.article</field>
+        <field name="model">my.knowledge.article</field>
+        <field name="arch" type="xml">
+            <form js_class="my_knowledge_article_form">
+                <div class="sidebar">
+                    <a href="#">
+                        <input type="text" placeholder="Search.."
+
+                               name="search"/>
+                    </a>
+                    <a href="#" class="link-active">All Articles</a>
+                    <a href="#">Favorites</a>
+                    <a href="#">Archived</a>
+                    <a href="#" class="move-to-trash">Move to Trash
+                        <i class="fa fa-trash-o"
+                           style="font-size:24px"></i>
+                    </a>
+
+                </div>
+
+                <!-- Page Content -->
+                <div class="page-content">
+
+                    <div class="header">
+                        <h3>
+                            <field name="feedback" invisible="1"/>
+                            <field name="name"/>
+                        </h3>
+                        <div class="icon-container">
+                            <field name="tags" widget="many2many_tags"/>
+                            <a href="#" t-on-click="_shareArticle">
+                                <i class="fa fa-share"
+                                   style="font-size:24px"></i>
+                            </a>
+                            <a href="#">
+                                <i class="fa fa-bookmark-o"
+                                   style="font-size:24px"></i>
+                            </a>
+                            <a href="#" t-on-click="_FeedBack">
+                                <i class="fa fa-support"
+                                   style="font-size:24px"></i>
+                            </a>
+                            <a href="#" t-on-click="_MoreOptions">
+                                <i class="fa fa-ellipsis-v"
+                                   style="font-size:24px"></i>
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="content">
+                        <field name="article_body"/>
+                    </div>
+                    <div t-if="state.chatter"  class="knowledge_chatter">
+                        <div class="oe_chatter o_scroll_view_lg">
+                            <field name="message_follower_ids"/>
+                            <field name="activity_ids"/>
+                            <field name="message_ids"/>
+                        </div>
+                    </div>
+
+                </div>
+
+            </form>
+        </field>
+    </record>
+
+    <menuitem id="myknowledge_module_root"
+              name="Myknowledge" action="my_knowledge_id"
+              sequence="0"/>
+
+    <menuitem id="knowledge_module_sub_id"
+              name="MyKnowledge" action="my_knowledge_id"
+              parent="myknowledge_module_root"
+              sequence="1"/>
+</odoo>

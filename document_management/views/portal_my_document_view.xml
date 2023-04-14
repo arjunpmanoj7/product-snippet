@@ -1,0 +1,147 @@
+<odoo>
+
+    <template id="portal_my_home_menu_doc" name="Portal layout : doc menu"
+              inherit_id="portal.portal_breadcrumbs" priority="20">
+        <xpath expr="//ol[hasclass('o_portal_submenu')]" position="inside">
+            <li t-if="page_name == 'document'">
+                <a t-if="document" t-attf-href="/my/documents">/ Documents</a>
+                <t t-else="">/ Documents</t>
+            </li>
+            <li t-if="document" class="breadcrumb-item active">
+                / <t t-esc="name"/>
+            </li>
+        </xpath>
+    </template>
+
+     <template id="helpdesk_website_inherit"
+              inherit_id="portal.portal_searchbar">
+        <xpath expr="//div[@id='o_portal_navbar_content']" position="after">
+            <t t-if="page_name == 'document'">
+                <button class="btn btn-outline-secondary fa fa-upload btn-block return-btn"
+                    id="web_docs_upload" title="Upload">
+                </button>
+            </t>
+        </xpath>
+     </template>
+
+    <template id="portal_my_document_view" name="Document Portal Template"
+              inherit_id="portal.portal_sidebar" primary="True">
+    <xpath expr="//div[hasclass('o_portal_sidebar')]" position="inside">
+        <div class="row mt16 o_portal_sale_sidebar">
+
+            <!-- Sidebar -->
+            <t t-call="portal.portal_record_sidebar">
+                <t t-set="classes" t-value="'col-lg-auto d-print-none'"/>
+                <t t-set="title">
+                    <h4 class="mb-0"><t t-esc="workspace_id"/></h4>
+                </t>
+                <t t-set="entries">
+                    <ul class="list-group list-group-flush flex-wrap flex-row
+                    flex-lg-column">
+                        <li class="list-group-item d-grid align-content-start">
+                            <p align="center"><t t-esc="date"/></p>
+                        </li>
+                        <li class="list-group-item d-grid align-content-start">
+                            <t t-if="extension == 'url'">
+                                <a class="btn btn-primary fa fa-download"
+                                   t-att-href="content_url" target="_blank">
+                                    Open Url
+                                </a>
+                            </t>
+                            <t t-else="">
+                                <a class="btn btn-primary fa fa-download"
+                                   t-attf-href="/web/content/#{attachment_id}?download=true&amp;access_token=#{access_token}" target="_blank">
+                                    Download
+                                </a>
+                            </t>
+                        </li>
+                        <t t-if="activity_ids">
+                            <li class="list-group-item d-grid align-content-start">
+                                <div class="small mb-1">
+                                    <strong class="text-muted">Activity</strong>
+                                </div>
+                                    <t t-foreach="activity_ids" t-as="activity">
+                                        <p>
+                                            <i class="fa fa-clock-o"
+                                               style="padding-right:5px;"/>
+                                            <t t-if="activity['activity_summary']"
+                                               t-esc="activity['activity_summary']"/>
+                                            <t t-else=""
+                                               t-esc="activity['activity_name']"/>
+                                        </p>
+                                        <p style="padding-left:20px;">
+                                            <t t-esc="activity['activity_date_deadline']"/>
+                                        </p>
+                                        <hr style="width:80%"/>
+                                </t>
+                            </li>
+                        </t>
+                        <li class="list-group-item d-grid align-content-start">
+                            <div class="small mb-1">
+                                <strong class="text-muted">Owner</strong>
+                            </div>
+                            <div class="row flex-nowrap">
+                                <div class="col flex-grow-0 pe-2">
+                                    <img class="rounded-circle mr4 float-start
+                                    o_portal_contact_img"
+                                    t-att-src="image_data_uri(owner.avatar_1024)"
+                                     alt="Contact"/>
+                                </div>
+                                <div class="col ps-0" style="min-width: 150px">
+                                    <span t-esc="owner"
+                                        t-options='{
+                                        "widget": "contact",
+                                        "fields": ["name", "phone"],
+                                        "no_marker": True}'/>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </t>
+            </t>
+
+            <!-- Page content -->
+                <div id="document_content"
+                     class="col-12 col-lg justify-content-end">
+                    <div t-attf-class="card #{'pb-5' if report_type == 'html' else ''}"
+                         id="portal_doc_content">
+                        <div t-call="document_management.doc_content_preview"/>
+                    </div>
+                </div>
+
+            </div>
+        </xpath>
+    </template>
+
+
+
+    <template id="doc_content_preview" name="Sales Order Portal Content">
+        <div id="introduction" t-attf-class="pb-2 pt-3 #{'card-header bg-white' if report_type == 'html' else ''}" style="height:700px;">
+            <h2><t t-esc="name"/></h2>
+            <t t-if="extension == 'pdf'">
+                <iframe width="100%" height="100%" t-att-src="url" frameborder="0"></iframe>
+            </t>
+            <t t-if="extension == 'xlsx'">
+                 <iframe width="100%" height="100%" src="https://docs.google.com/gview?url=http://ieee802.org/secmail/docIZSEwEqHFr.doc&amp;embedded=true" frameborder="0"></iframe>
+            </t>
+            <t t-if="extension == 'txt'">
+                <iframe width="100%" height="100%" t-att-src="url" frameborder="0"></iframe>
+            </t>
+            <t t-if="extension == 'url'">
+                <iframe width="100%" height="100%" t-att-src="preview" frameborder="0"></iframe>
+            </t>
+            <t t-if="extension == 'docx'">
+                <iframe width="100%" height="100%" src="https://docs.google.com/gview?url=http://ieee802.org/secmail/docIZSEwEqHFr.doc&amp;embedded=true" frameborder="0"></iframe>
+            </t>
+            <t t-if="extension == 'jpg'">
+                <iframe width="100%" height="100%" t-att-src="url" frameborder="0"></iframe>
+            </t>
+            <t t-if="extension == 'png'">
+                <iframe width="100%" height="100%" t-att-src="url" frameborder="0"></iframe>
+            </t>
+            <t t-if="extension == 'csv'">
+                <iframe width="100%" height="100%" t-att-src="url" frameborder="0"></iframe>
+            </t>
+        </div>
+    </template>
+</odoo>

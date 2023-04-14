@@ -1,0 +1,81 @@
+<odoo>
+    <record id="module_document_module" model="ir.module.category">
+        <field name="name">Document Management</field>
+        <field name="description">Access for Document module</field>
+        <field name="sequence">50</field>
+    </record>
+
+    <record id="view_own_document" model="res.groups">
+            <field name="name">User</field>
+            <field name="category_id" ref="module_document_module"/>
+    </record>
+
+    <record id="view_all_document" model="res.groups">
+        <field name="name">Manager</field>
+        <field name="category_id" ref="module_document_module"/>
+        <field name="implied_ids" eval="[(4, ref('view_own_document'))]"/>
+    </record>
+
+    <record id="document_module_manager" model="ir.rule">
+        <field name="name">Document Manager</field>
+        <field name="model_id" ref="model_document_file"/>
+        <field name="domain_force">['|', '|', ('security', '=', 'specific_users'),
+                                              ('security', '=', 'managers_and_owner'), '&amp;',
+                                              ('security', '=', 'private'),
+                                              ('user_id', '=', user.id)]</field>
+        <field name="groups" eval="[(4, ref('view_all_document'))]"/>
+        <field name="perm_read" eval="True"/>
+        <field name="perm_write" eval="True"/>
+        <field name="perm_create" eval="True"/>
+        <field name="perm_unlink" eval="True"/>
+        <field name="active" eval="True"/>
+    </record>
+
+    <record id="document_module_own" model="ir.rule">
+        <field name="name">View Own Document</field>
+        <field name="model_id" ref="model_document_file"/>
+        <field name="domain_force">['|', '|', '|', '|', ('user_ids', 'in', user.id), '&amp;',
+                                                        ('security', '=', 'specific_users'),
+                                                        ('user_ids', '=', False), '&amp;',
+                                                        ('security', '=', 'private'),
+                                                        ('user_id', '=', user.id), '&amp;',
+                                                        ('security', '=', 'managers_and_owner'),
+                                                        ('user_id', '=', user.id), '&amp;',
+                                                        ('user_ids', 'not in', user.id),
+                                                        ('user_id', '=', user.id)]</field>
+        <field name="groups" eval="[(4, ref('view_own_document'))]"/>
+        <field name="perm_read" eval="True"/>
+        <field name="perm_write" eval="True"/>
+        <field name="perm_create" eval="True"/>
+        <field name="perm_unlink" eval="False"/>
+        <field name="active" eval="True"/>
+    </record>
+
+    <record id="document_request_own" model="ir.rule">
+        <field name="name">View Own Request</field>
+        <field name="model_id" ref="model_request_document"/>
+        <field name="domain_force">[('requested_by', '=', user.id)]</field>
+        <field name="groups" eval="[(4, ref('view_own_document'))]"/>
+        <field name="perm_read" eval="True"/>
+        <field name="perm_write" eval="True"/>
+        <field name="perm_create" eval="True"/>
+        <field name="perm_unlink" eval="True"/>
+        <field name="active" eval="True"/>
+    </record>
+
+        <record id="document_request_all" model="ir.rule">
+        <field name="name">View All Request</field>
+        <field name="model_id" ref="model_request_document"/>
+        <field name="domain_force">[(1, '=', 1)]</field>
+        <field name="groups" eval="[(4, ref('view_all_document'))]"/>
+        <field name="perm_read" eval="True"/>
+        <field name="perm_write" eval="True"/>
+        <field name="perm_create" eval="True"/>
+        <field name="perm_unlink" eval="True"/>
+        <field name="active" eval="True"/>
+    </record>
+
+    <record id="base.default_user" model="res.users">
+        <field name="groups_id" eval="[(4,ref('document_management.view_own_document'))]"/>
+    </record>
+</odoo>

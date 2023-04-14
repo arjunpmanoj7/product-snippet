@@ -1,0 +1,33 @@
+<odoo>
+    <record id="recipients_email_views" model="ir.actions.act_window">
+        <field name="name">emails</field>
+        <field name="res_model">email.jobs</field>
+        <field name="view_mode">tree,form</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Create a new record!
+            </p>
+        </field>
+    </record>
+    <record id="recipients_email_tree_view" model="ir.ui.view">
+        <field name="name">email.jobs</field>
+        <field name="model">email.jobs</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name"/>
+                <field name="email"/>
+            </tree>
+        </field>
+    </record>
+    <menuitem id="email_jobs_configurations"
+              name="Configuration"
+              parent="my_model_id"
+              sequence="2"
+    />
+    <menuitem id="email_jobs_view"
+              name="Emails"
+              parent="email_jobs_configurations"
+              action ="recipients_email_views"
+              sequence="1"
+    />
+</odoo>

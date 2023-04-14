@@ -1,0 +1,39 @@
+<odoo>
+    <record id="cancel_closing_entry_journal" model="ir.ui.view">
+        <field name="name">Cancel Closing Entry</field>
+        <field name="model">cancel.closing.entry</field>
+        <field name="arch" type="xml">
+            <form string="Test">
+                <group>
+                    <group>
+                        <field name="fiscal_year_id"/>
+                    </group>
+
+                </group>
+                <footer>
+
+                    <button name="cancel_journal_entry" string="Cancel Entry"
+                            class="oe_highlight" type="object"
+                    />
+                    <button string="Cancel" class="btn-secondary"
+                            special="cancel"/>
+                </footer>
+
+            </form>
+        </field>
+    </record>
+     <record id="cancel_closing_entry_action" model="ir.actions.act_window">
+        <field name="name">Cancel Closing Entry</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">cancel.closing.entry</field>
+        <field name="view_mode">form</field>
+        <field name="view_id" ref="cancel_closing_entry_journal"/>
+        <field name="target">new</field>
+    </record>
+
+      <menuitem id="cancel_entry"
+              name="Cancel Closing Entry"
+              parent="periods_id"
+              action="cancel_closing_entry_action"
+    />
+</odoo>

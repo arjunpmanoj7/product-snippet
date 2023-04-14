@@ -1,0 +1,16 @@
+{
+    'name': 'zatac integration',
+    'version': '16.0.1.0.0',
+    'summary': """zatac integration""",
+    'description': """zatac integration""",
+    'author': 'Cybrosys Techno Solutions',
+    'company': 'Cybrosys Techno Solutions',
+    'maintainer': 'Cybrosys Techno Solutions',
+    'website': "https://cybrosys.com/",
+    'depends': ['base','sale'],
+    'data': ['views/zatac_general_view.xml'],
+    'license': 'AGPL-3',
+    'installable': True,
+    'auto_install': False,
+    'application': False,
+}

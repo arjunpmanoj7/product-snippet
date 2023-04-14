@@ -1,0 +1,9 @@
+<templates id="template" xml:space="preserve">
+        <t t-name="PreOrder" owl="1">
+            <div class="control-button">
+            <i id="pre_order_icon" class="fas fa-cart-plus"> </i>
+                <span> </span>
+                <span>Pre Order</span>
+            </div>
+        </t>
+</templates>

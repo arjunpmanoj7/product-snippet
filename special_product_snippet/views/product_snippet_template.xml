@@ -1,0 +1,9 @@
+<odoo>
+    <template id="product_snippets" inherit_id="website.snippets"
+              priority="8">
+        <xpath expr="//div[@id='snippet_effect']//t[@t-snippet][last()]"
+               position="after">
+            <t t-snippet="special_product_snippet.s_special_snippets"/>
+        </xpath>
+    </template>
+</odoo>

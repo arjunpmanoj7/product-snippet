@@ -1,0 +1,19 @@
+<odoo>
+    <record  id="module_management" model="ir.module.category" >
+        <field name="name">SMS</field>
+        <field name="description">User access level for Sms module</field>
+        <field name="sequence">20</field>
+    </record>
+
+    <record id="sms_user" model="res.groups">
+        <field name="name">User</field>
+        <field name="category_id" ref="module_management"/>
+    </record>
+
+    <record id="sms_manager" model="res.groups">
+        <field name="name">Manager</field>
+        <field name="category_id" ref="module_management"/>
+        <field name="implied_ids" eval="[(4, ref('sms_user'))]"/>
+    </record>
+
+</odoo>

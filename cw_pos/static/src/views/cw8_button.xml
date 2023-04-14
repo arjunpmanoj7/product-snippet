@@ -1,0 +1,15 @@
+<templates id="template" inherit_id="point_of_sale_template" xml:space="preserve">
+    <t t-inherit="point_of_sale.Orderline" t-inherit-mode="extension">
+        <xpath expr="//span[hasclass('price')]" position="inside">
+        <t>
+        <i id="clear_icon" class="fa fa-fw o_button_icon fa-cubes" t-on-click="onClickUploadProduct"
+           style="color:orange"/>
+        </t>
+            <br></br>
+            </xpath>product_value
+        <xpath expr="//span[hasclass('price')]" position="after">
+                <span class="product_value"></span>
+        </xpath>
+
+    </t>
+</templates>

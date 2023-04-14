@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="fiscal_year_action" model="ir.actions.act_window">
+        <field name="name">Fiscal Year</field>
+        <field name="res_model">fiscal.year</field>
+        <field name="view_mode">tree,form,kanban</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Create a new record!
+            </p>
+        </field>
+    </record>
+
+    <record id="fiscal_year_form" model="ir.ui.view">
+        <field name="name">fiscal year tree</field>
+        <field name="model">fiscal.year</field>
+        <field name="arch" type="xml">
+            <form>
+                <header>
+                    <field name="state" widget="statusbar"
+                           statusbar_visible="draft,open,close"/>
+                    <button name="compute_periods" string="Compute Periods"
+                            type="object" class="oe_highlight" states="draft"
+                    />
+                    <button name="reopen_fiscal" string="Reopen"
+                            type="object" class="oe_highlight" states="close"
+                    />
+                    <button name="cancel_fiscal" string="close"
+                            type="object" class="oe_highlight" states="open"
+                    />
+                </header>
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="fiscal_year_name"/>
+                            <field name="code"/>
+                        </group>
+                        <group>
+
+                            <field name="start_date"/>
+                            <field name="end_date"/>
+
+                        </group>
+                    </group>
+                    <notebook>
+                        <page string="Periods">
+                            <field name="fiscal_periods_ids">
+                                <tree create="0" delete="0">
+                                    <field name="period_name"/>
+                                    <field name="code"/>
+                                    <field name="start_period"/>
+                                    <field name="end_period"/>
+                                    <field name="state"/>
+                                    <button name="view_period"
+                                            string="view"
+                                            class="oe_highlight" type="object"
+                                    />
+                                </tree>
+                            </field>
+                        </page>
+                    </notebook>
+
+
+                </sheet>
+                <div class="oe_chatter">
+                    <field name="message_follower_ids"/>
+                    <field name="activity_ids"/>
+                    <field name="message_ids"/>
+
+                </div>
+
+            </form>
+
+        </field>
+    </record>
+    <record id="fiscal_year_tree_view" model="ir.ui.view">
+        <field name="name">fiscal year</field>
+        <field name="model">fiscal.year</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="fiscal_year_name"/>
+                <field name="code"/>
+                <field name="start_date"/>
+                <field name="end_date"/>
+            </tree>
+        </field>
+    </record>
+    <menuitem id="periods_id"
+              name="Fiscal Year/Periods"
+              parent="account.menu_finance_configuration"
+    />
+    <menuitem id="fiscal_year"
+              name="Fiscal Year"
+              parent="periods_id"
+              action="fiscal_year_action"
+    />
+
+
+</odoo>

@@ -1,0 +1,5 @@
+id,name,model_id/id,group_id/id,perm_read,perm_write,perm_create,perm_unlink
+access_email_jobs,email_jobs,model_email_jobs,base.group_user,1,1,1,1
+access_email_queue_jobs,email_queue_jobs,model_email_queue_jobs,base.group_user,1,1,1,1
+access_scheduled_date,scheduled_date,model_scheduled_date,base.group_user,1,1,1,1
+access_queue_job_filter,queue.job.filter,model_queue_job_filter,base.group_user,1,1,1,1
