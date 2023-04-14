@@ -1,0 +1,16 @@
+submitHandler:() => {
+            var dob = $("#dateofbirth").val();
+            dobdate = new Date(dob);
+            nowdate = new Date();
+            var ag = nowyear - dobyear;
+            if(nowdate < dobdate){
+                alert("your not eligible for open this cybrosys website!!##@")
+            }else{
+            window.location="https://www.cybrosys.com/";
+        }
+    }
+     
+$.validator.addMethod("checkEmail",function(value,element){
+        var regex = /^([a-zA-Z0-9_.+-])+\@(([a-zA-Z0-9-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+        return regex.test(value);
+    },"invalid email format");
